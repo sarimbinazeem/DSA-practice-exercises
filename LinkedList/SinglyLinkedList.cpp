@@ -81,7 +81,8 @@ class LinkedList
         void insert(int elem,int idx)
         {
             //index boundary check
-            if(idx>= size || idx <0 )
+            //Insertion at 0th is inserting before 0 index.
+            if(idx> size || idx <0 )
             {
                 cout<<"Invalid Index...\n";
                 return;
@@ -322,6 +323,10 @@ class LinkedList
                 delete temp;
                 temp = next;
             }
+
+             head = nullptr;
+            tail = nullptr;
+            size=0;
         }
 };
 
