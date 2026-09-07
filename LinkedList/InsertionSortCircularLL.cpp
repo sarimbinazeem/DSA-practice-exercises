@@ -8,14 +8,14 @@ class Node
         Node*next;
 };
 
-class LinkedList
+class CircularLL
 {
     private:
         Node*head;
         Node*tail;
 
     public:
-        LinkedList()
+        CircularLL()
         {
             head = nullptr;
             tail = nullptr;
@@ -25,7 +25,7 @@ class LinkedList
         {
             Node*temp = new Node;
             temp->data = elem;
-            temp->next = NULL;
+            temp->next = head;
 
             if(head == NULL)
             {
@@ -36,6 +36,7 @@ class LinkedList
             {
                 tail->next = temp;
                 tail = temp;
+                tail->next = head;
 
             }
         }
@@ -44,11 +45,11 @@ class LinkedList
         {
             Node*temp = head;
 
-            while(temp!=NULL)
+            do
             {
                 cout<< temp->data <<" ";
                 temp = temp->next;
-            }
+            }while(temp!=head);
 
             cout<< endl;
         }
@@ -57,17 +58,21 @@ class LinkedList
         {
             int size =0;
             Node*temp = head;
-            while(temp != NULL)
+            do
             {
                 size++; 
                 temp= temp->next;
-            }
+            }while(temp!=head);
 
             return size;
         }
 
-        ~LinkedList()
+        ~CircularLL()
         {
+            if (head == NULL) return;
+
+            tail->next = NULL;
+
             Node*temp = head; 
             while(temp!=NULL)
             {
@@ -116,12 +121,6 @@ class LinkedList
 
                 return temp->data;
             }
-            else
-            {
-            	cout<<"Invalid Index..\n";
-            	return 0;
-            	
-			}
         }
         
         void insertionSort()
@@ -154,7 +153,7 @@ class LinkedList
 
 int main()
 {
-    LinkedList list;
+    CircularLL list;
 
     list.append(20);
     list.append(10);
