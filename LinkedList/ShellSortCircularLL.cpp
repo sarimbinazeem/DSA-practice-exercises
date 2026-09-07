@@ -25,7 +25,7 @@ class CircularLL
         {
             Node*temp = new Node;
             temp->data = elem;
-            
+            temp->next = head;
 
             if(head == NULL)
             {
@@ -49,7 +49,7 @@ class CircularLL
             {
                 cout<< temp->data <<" ";
                 temp = temp->next;
-            }while(temp!=head);
+            }while(temp != head);
 
             cout<< endl;
         }
@@ -62,7 +62,7 @@ class CircularLL
             {
                 size++; 
                 temp= temp->next;
-            }while(temp!=head);
+            }while(temp != head);
 
             return size;
         }
@@ -70,6 +70,7 @@ class CircularLL
         ~CircularLL()
         {
             if(head == NULL) return;
+
             tail->next = NULL;
             Node*temp = head; 
             while(temp!=NULL)
@@ -104,38 +105,57 @@ class CircularLL
 			}
 
         }
-        void selectionSort()
+
+        int getData(int pos)
         {
             int size = getLenght();
 
-            for(int i=0 ;i<size-1;i++)
+            if(pos>=0 && pos<size)
             {
-                int minIndex = i;
-
-                for(int j=i+1;j<size;j++)
+                Node*temp = head;
+                for(int i=0;i<pos;i++)
                 {
-                    Node* nodeA = getNode(minIndex);
-                    Node* nodeB = getNode(j);
-                    if(nodeA->data > nodeB->data)
-                    {
-                        minIndex = j;
+                    temp = temp->next;
+                }
 
+                return temp->data;
+            }
+            else
+            {
+            	cout<<"Invalid Index..\n";
+            	return 0;
+            	
+			}
+        }
+        
+        void shellShort()
+        {
+            int size = getLenght();
+
+            for(int gap = size/2; gap>0 ; gap/=2)
+            {
+                for(int i=gap; i<size;i++)
+                {
+                    int key = getData(i);
+
+                    int j=i;
+
+                    while(j>=gap && getData(j-gap)> key)
+                    {
+                        //insert starting element in the place of gap element
+                        Node* nodeJ = getNode(j);
+                        Node* nodeGap = getNode(j-gap);
+
+                        nodeJ->data = nodeGap->data;
+                        j = j-gap;
                     }
 
-                }
+                    //replace the starting elements with the key 
 
-                if(minIndex != i)
-                {
-                    Node* nodeA = getNode(minIndex);
-                    Node* nodeB = getNode(i);
-                    int temp = nodeA->data;
-                    nodeA->data = nodeB->data;
-                    nodeB->data = temp;
-
+                    Node* nodeGap = getNode(j);
+                    nodeGap->data = key;
                 }
-                
             }
-
         }
 
 };
@@ -156,7 +176,7 @@ int main()
 
     cout<<endl;
 
-	list.selectionSort();
+	list.shellShort();
 	    
     cout<<"\n===After Sorting===\n";
     list.display();
