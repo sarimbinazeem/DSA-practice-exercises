@@ -89,11 +89,11 @@ class LinkedList
 
             //calculate size
             int size=getLenght();
+            bool swapped = false;
             
             //it have n-1 iterations 
             for(int i=0;i<size-1;i++)
             {
-                bool swapped = false;
                 Node *curr = head;
                 //every iteration puts the large element in its correct position
                 for(int j=0;j<size-i-1;j++)
