@@ -67,11 +67,12 @@ class LinkedList
 
             //we go till tail and find the postion of last ndoe
             int size=0;
-            while(tail!=NULL)
+            while(tail->next != NULL)
             {
-                tail= tail->next;
+                tail = tail->next;
                 size++;
             }
+            size++;
 
             //To avoid unecesarry rotation we use %
             //if k =4 , then 4%3 = 1, we can achieve the same goal with 1 rotation as with 4 rotations
