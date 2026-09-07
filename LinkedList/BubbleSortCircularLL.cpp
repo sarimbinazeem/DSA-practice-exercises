@@ -8,14 +8,14 @@ class Node
         Node*next;
 };
 
-class LinkedList
+class CircularLL
 {
     private:
         Node*head;
         Node*tail;
 
     public:
-        LinkedList()
+        CircularLL()
         {
             head = nullptr;
             tail = nullptr;
@@ -25,18 +25,19 @@ class LinkedList
         {
             Node*temp = new Node;
             temp->data = elem;
-            temp->next = NULL;
+            temp->next = head;
 
             if(head == NULL)
             {
                 head = temp;
                 tail = temp;
+                tail->next = head;
             }
             else
             {
                 tail->next = temp;
                 tail = temp;
-
+                tail->next = head;
             }
         }
 
@@ -44,11 +45,11 @@ class LinkedList
         {
             Node*temp = head;
 
-            while(temp!=NULL)
+            do
             {
                 cout<< temp->data <<" ";
                 temp = temp->next;
-            }
+            }while(temp!=head);
 
             cout<< endl;
         }
@@ -57,19 +58,21 @@ class LinkedList
         {
             int size =0;
             Node*temp = head;
-            while(temp != NULL)
+            do
             {
                 size++; 
                 temp = temp->next;
-            }
+            }while(temp!=head);
 
             return size;
         }
 
-        ~LinkedList()
+        ~CircularLL()
         {
             if(head == NULL) return;
-            
+            //break the cycle first
+            tail->next = NULL;
+
             Node*temp = head; 
             while(temp!=NULL)
             {
@@ -95,7 +98,7 @@ class LinkedList
             //it have n-1 iterations 
             for(int i=0;i<size-1;i++)
             {
-                bool swapped = false;
+          	  bool swapped = false;	
                 Node *curr = head;
                 //every iteration puts the large element in its correct position
                 for(int j=0;j<size-i-1;j++)
@@ -126,7 +129,7 @@ class LinkedList
 
 int main()
 {
-    LinkedList list;
+    CircularLL list;
 
     list.append(20);
     list.append(10);
