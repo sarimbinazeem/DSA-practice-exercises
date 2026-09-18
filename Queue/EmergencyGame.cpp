@@ -113,7 +113,7 @@ int main()
         cout<<"Enter Operation (ARRIVE or TREAT): ";
         cin>>operation;
 
-        for(int i =0 ;i< operation.length() ; i++)
+        for(int j =0 ;j< operation.length() ; j++)
         {
             operation[i] = tolower(operation[i]);
         }
