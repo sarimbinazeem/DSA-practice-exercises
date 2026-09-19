@@ -69,6 +69,17 @@ class LinkedList
             cout<<" NULL";
             cout<<endl;
         }
+
+        ~LinkedList()
+        {
+            Node*temp = head;
+            while(temp!=NULL)
+            {
+                Node*next = temp->next;
+                delete temp;
+                temp = next;
+            }
+        }
     };
     
     Node* reverse(Node*head)
@@ -120,4 +131,6 @@ int main()
 
     cout<<"\n===Reversed List===\n";
     displayReversed(reversed);
+
+    delete reversed;
 }
