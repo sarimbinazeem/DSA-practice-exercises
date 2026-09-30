@@ -3,7 +3,7 @@ using namespace std;
 
 int factorial(int number, int previous)
 {
-    if(number==0) return 1;
+    if(number==0) return previous;
 
     return factorial(number-1,previous *number);
 }
