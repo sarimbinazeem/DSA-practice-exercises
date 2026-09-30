@@ -134,7 +134,7 @@ int main()
     list.insert(2);
     list.insert(1);
 
-    cout<<"\n===List===\n";
+    cout<<"\n===List===\n"; 
     list.display();
 
     Node*head = list.head;
