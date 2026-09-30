@@ -86,12 +86,13 @@ int main()
 
     int* arr = new int[size];
 
-    cout << "Enter tracking numbers:\n";
-
     for (int i = 0; i < size; i++)
     {
+        
+       cout << "Enter tracking number "<<i+1<<"\n";
         cin >> arr[i];
     }
+
 
     minimalSwapCrane(arr, size);
 
