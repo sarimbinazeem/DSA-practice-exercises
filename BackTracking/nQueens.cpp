@@ -4,9 +4,9 @@ using namespace std;
 bool isSafe(int arr[][4], int size, int x, int y)
 {
     //check if not in same column
-    for(int i = 0 ; i <y; i ++) 
+    for(int i = 0 ; i <x; i ++) 
     {
-        if(arr[x][i]) return false;
+        if(arr[i][y]) return false;
     }
 
     //check if in upper-left diagonal
