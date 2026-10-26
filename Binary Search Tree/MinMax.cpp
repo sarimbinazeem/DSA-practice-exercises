@@ -65,6 +65,38 @@ int findMin(Node*root)
     return root->data;
 }
 
+Node* deleteMin(Node*root)
+{
+    if(root == NULL){
+        return NULL;
+    }
+
+    if(root->left == NULL){
+        Node*temp = root->right;
+        delete root;
+        return temp;
+    }
+
+    root->left = deleteMin(root->left);
+    return root;
+}
+
+Node* deleteMax(Node*root)
+{
+    if(root==NULL){
+        return NULL;
+    }
+    if(root->right == NULL)
+    {
+        Node*temp = root->left;
+        delete root;
+        return temp;
+    }
+
+    root->right = deleteMax(root->right);
+    delete root;
+}
+
 int main()
 {
     Node* root = NULL;
