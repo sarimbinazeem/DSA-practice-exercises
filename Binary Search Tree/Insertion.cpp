@@ -37,6 +37,46 @@ Node* insert(Node*root,int val)
     return root;
 }
 
+Node* insertIterative(Node*root,int val)
+{
+    Node* newNode = new Node;
+    newNode->data = val;
+    newNode->left = NULL;
+    newNode->right = NULL;
+
+    if(root==NULL){
+        return newNode;
+    }
+    
+    //somewhere in middle
+    Node*current = root;
+    Node*parent = NULL;
+
+    while(current!=NULL)
+    {
+        parent = current;
+        if(val < current->data)
+        {   
+            current = current->left;
+        }else if (val>current->data){
+            current= current->right;
+        }
+        else{
+            delete newNode;
+            return root;
+        }
+    }
+
+    if(val < parent->data)
+    {
+        parent->left = newNode;
+    }
+    else{
+        parent->right = newNode;
+    }
+    return root;
+}
+
 int main()
 {
     Node* root = NULL;
