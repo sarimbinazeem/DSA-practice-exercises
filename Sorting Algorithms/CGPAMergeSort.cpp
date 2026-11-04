@@ -1,3 +1,25 @@
+/*
+Question 6:
+FAST NUCES offers two academic awards: Dean’s List and Rector’s List, where the Rector’s List is
+the higher award. The university wants to develop a system to rank students according to their
+academic performance and determine award eligibility.
+Develop a C++ program that stores student ID, name, department, and CGPA. Your program must
+rank students by CGPA in descending order, assign awards according to university policy, and display
+the final merit list. Students with equal CGPAs should be handled appropriately.
+Algorithmic Constraints:
+To ensure the system scales efficiently to large university databases, you are strictly forbidden from
+using O(N
+2
+) sorting techniques (such as Bubble, Selection, or Insertion Sort), as well as built-in
+library sorting functions.
+1. You must manually implement a divide-and-conquer sorting algorithm to achieve an average
+time complexity of O(nlogn)
+2. Explain your chosen algorithm briefly and explain how it handles the stability of records
+when CGPAs are equal.
+3. Test your program using at least 30 students, including students with equal CGPAs and
+students eligible for different awards.
+*/
+
 #include <iostream>
 using namespace std;
 
